@@ -4,17 +4,36 @@ using UnityEngine;
 
 public class ProjectileController : MonoBehaviour
 {
+    public Color normalColor;
+    public Color powerColor;
     [SerializeField] float speed = 10;
     [SerializeField] float closeEnough = .01f;
     [SerializeField] GameObject splashDamagePrefab;
+    Renderer[] renderers;
     public bool splashDamage;
     public int damage = 0;
     public Transform target;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
+    {
+        renderers = GetComponentsInChildren<Renderer>();
+        SetColor();
+    }
+
+    void SetColor()
     {
         
+        foreach (Renderer renderer in renderers)
+        {
+            if (damage > 2) //Look, it's a game jam.
+            {
+                renderer.material.SetColor("_BaseColor", powerColor);
+            }
+            else
+            {
+                renderer.material.SetColor("_BaseColor", normalColor);
+            }
+        }
     }
 
     // Update is called once per frame

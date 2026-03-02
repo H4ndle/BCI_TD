@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 
     [Header("State")] //We could enumify this if we need more states.
     public bool waveInProgress = false;
+    [SerializeField] Animator waveEndAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -57,5 +58,11 @@ public class GameManager : MonoBehaviour
     void UpdateReadout()
     {
         goldReadout.text = currentGold.ToString();
+    }
+
+    public void EndWave()
+    {
+        waveInProgress = false;
+        waveEndAnimator.SetTrigger("WaveCleared");
     }
 }

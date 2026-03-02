@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3091f90d3b64324893e142bfb01de6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  normalColor: {r: 1, g: 0.4545213, b: 0, a: 1}
+  powerColor: {r: 0, g: 0.6660838, b: 1, a: 1}
   speed: 45
   closeEnough: 0.01
   splashDamagePrefab: {fileID: 7011694288896331369, guid: 1a32adb0cebe078409efd8da285129ae,

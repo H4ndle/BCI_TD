@@ -19,7 +19,7 @@ public class TowerSocket : MonoBehaviour
     {
         if (!currentTower && GameManager.instance.currentGold >= towerPrefab.GetComponent<TowerController>().cost)
         {
-            currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity);
+            currentTower = Instantiate(towerPrefab, transform.position, Quaternion.identity,transform.parent);
             GameManager.instance.ModifyGold(-currentTower.GetComponent<TowerController>().cost);
         }
     }

@@ -88,6 +88,7 @@ public class TowerController : MonoBehaviour
             }
             else
             {
+                transform.parent.BroadcastMessage("CloseUpgradeUI");
                 SummonUpgradeUI();
             }
         }
@@ -109,16 +110,6 @@ public class TowerController : MonoBehaviour
             currentTarget = null;
         }
     }
-
-    //private void OnMouseUp()
-    //{
-    //    CloseUpgradeUI();
-    //}
-
-    //private void OnMouseExit()
-    //{
-    //    CloseUpgradeUI();
-    //}
 
     public void SummonUpgradeUI()
     {
@@ -160,5 +151,6 @@ public class TowerController : MonoBehaviour
     public void UpgradeSpeed()
     {
         fireRate = fireRate * .75f;
+        CloseUpgradeUI();
     }
 }
