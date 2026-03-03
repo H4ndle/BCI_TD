@@ -108,6 +108,7 @@ public class WaveSpawner : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(WaveSpawner))]
 public class WaveEditor : Editor
 {
@@ -122,5 +123,5 @@ public class WaveEditor : Editor
         }
     }
 }
-
+#endif
 

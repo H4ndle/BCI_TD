@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ProjectileController : MonoBehaviour
 {
@@ -41,11 +42,10 @@ public class ProjectileController : MonoBehaviour
     {
         if (target)
         {
-            if (Vector3.Distance(transform.position, target.position) > closeEnough)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
-            }
-            else
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+
+            float dist = Vector3.Distance(transform.position, target.position);
+            if (dist <= closeEnough)
             {
                 if (splashDamage)
                 {

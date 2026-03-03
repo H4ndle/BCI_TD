@@ -162,9 +162,10 @@ MonoBehaviour:
   normalColor: {r: 1, g: 0.4545213, b: 0, a: 1}
   powerColor: {r: 0, g: 0.6660838, b: 1, a: 1}
   speed: 45
-  closeEnough: 0.01
+  closeEnough: 0.05
   splashDamagePrefab: {fileID: 7011694288896331369, guid: 1a32adb0cebe078409efd8da285129ae,
     type: 3}
+  _text: {fileID: 0}
   splashDamage: 0
   damage: 0
   target: {fileID: 0}

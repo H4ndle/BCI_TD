@@ -17,6 +17,8 @@ public class TowerController : MonoBehaviour
 
     [Header("References")]
     [SerializeField] GameObject projectilePrefab;
+    [SerializeField] GameObject damagePrefab;
+    [SerializeField] GameObject splashPrefab;
     [SerializeField] Transform radiusObject;
     [SerializeField] EnemyController currentTarget;
     [SerializeField] GameObject upgradeUI;
