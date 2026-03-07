@@ -23,6 +23,9 @@ public class TowerUprade : MonoBehaviour
             GameManager.instance.ModifyGold(-upgradeCost);
             tower.saleValue += upgradeCost;
             eventToFire.Invoke();
+
+            BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Upgrades);
+            BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
         }
     }
 }

@@ -14,16 +14,23 @@ public class TowerController : MonoBehaviour
     [SerializeField] bool splashDamage;
     public int cost = 50;
     public int saleValue = 50;
+    private int upgradeTier = 0;
 
     [Header("References")]
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject splashPrefab;
+    [SerializeField] GameObject tier2SplashPrefab;
+    [SerializeField] GameObject tier2DamagePrefab;
+    [SerializeField] Transform modelSocket;
     [SerializeField] Transform radiusObject;
     [SerializeField] EnemyController currentTarget;
     [SerializeField] GameObject upgradeUI;
 
     public List<EnemyController> potentialTargets = new List<EnemyController>();
+
+    public enum TowerType {Normal, Splash, Damage}
+    public TowerType towerType = TowerType.Normal;
 
     // Start is called before the first frame update
     void Start()
@@ -86,14 +93,22 @@ public class TowerController : MonoBehaviour
         {
             if (upgradeUI.activeInHierarchy)
             {
-                CloseUpgradeUI();                
+                CloseUpgradeUI();
+                BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Upgrades);
+                BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
             }
             else
             {
                 transform.parent.BroadcastMessage("CloseUpgradeUI");
                 SummonUpgradeUI();
+                BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Towers);
+                BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Upgrades);
             }
         }
+    }
+    public void RemoteMouseUp()
+    {
+        OnMouseUpAsButton();
     }
 
     //NOTE: Towers only interact with the enemy physics layer, so we don't need to check tags here
@@ -132,6 +147,14 @@ public class TowerController : MonoBehaviour
     public void UpgradeDamage(int amount)
     {
         damage += amount;
+        
+        if(upgradeTier == 0)
+            towerType = TowerType.Damage; //damage type chosen
+
+        //Swap Model
+        SwapModel();
+
+        upgradeTier++;
         CloseUpgradeUI();
     }
 
@@ -139,6 +162,11 @@ public class TowerController : MonoBehaviour
     {
         range += amount;
         SetRadius(range);
+
+        //Swap Model
+        SwapModel();
+
+        upgradeTier++;
         CloseUpgradeUI();
     }
 
@@ -147,12 +175,53 @@ public class TowerController : MonoBehaviour
         fireRate = 1.7f;
         damage = 2;
         splashDamage = true;
+        if (upgradeTier == 0)
+            towerType = TowerType.Splash;//damage type chosen
+
+        //Swap Model
+        SwapModel();
+
+        upgradeTier++;
         CloseUpgradeUI();
     }
 
     public void UpgradeSpeed()
     {
         fireRate = fireRate * .75f;
+
+        //Swap Model
+        SwapModel();
+
+        upgradeTier++;
         CloseUpgradeUI();
+    }
+    private void CleanSocket()
+    {
+        if(modelSocket.childCount > 0)
+        {
+            for(int i = 0; i < modelSocket.childCount; i++)
+            {
+                Destroy(modelSocket.GetChild(i).gameObject);
+            }
+        }
+    }
+    private void SwapModel()
+    {
+        CleanSocket();
+
+        if(upgradeTier == 0)
+        {
+            if(towerType == TowerType.Splash)
+                Instantiate(splashPrefab, modelSocket);
+            else
+                Instantiate(damagePrefab, modelSocket);
+        }
+        else
+        {
+            if(towerType == TowerType.Splash)
+                Instantiate(tier2SplashPrefab, modelSocket);
+            else
+                Instantiate(tier2DamagePrefab, modelSocket);
+        }
     }
 }

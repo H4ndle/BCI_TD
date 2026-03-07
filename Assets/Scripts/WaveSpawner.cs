@@ -5,6 +5,8 @@ using UnityEngine;
 using UnityEditor;
 using Unity.VisualScripting;
 using System.Reflection;
+using UnityEngine.UI;
+using BCIEssentials.Extensions;
 
 [Serializable]
 public struct SpawnWave
@@ -24,8 +26,8 @@ public class WaveSpawner : MonoBehaviour
 
     public float[] spawnTimers;
     public int currentWaveCounter;
-    
-
+    [SerializeField] Transform waveIndicatorParent;
+    [SerializeField] Sprite waveCompleteIco;
     public Transform enemyParent;
 
     private void OnMouseDown()
@@ -36,8 +38,9 @@ public class WaveSpawner : MonoBehaviour
 
     public void BeginWave()
     {
+        //Debug.Log("Should start wave...");
         if (GameManager.instance.waveInProgress) return;
-
+        
         if (currentWaveCounter < waves.Length)
         {
             currentWave = waves[currentWaveCounter];
@@ -45,6 +48,10 @@ public class WaveSpawner : MonoBehaviour
             Array.Copy(currentWave.rates, spawnTimers, currentWave.rates.Length);
 
             GameManager.instance.waveInProgress = true;
+            BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Towers);
+            GameManager.instance.UpdateWaveText();
+            waveIndicatorParent.GetChild(currentWaveCounter).GetComponent<Image>().sprite = waveCompleteIco;
+
             StartCoroutine(SpawnerCoroutine(currentWave));
         }
         else

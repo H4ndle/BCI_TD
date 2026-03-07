@@ -2,7 +2,7 @@ Shader "Custom/AlwaysOnTop2"
 {
     Properties
     {
-        _BaseColor("_BaseColor", Color) = (0, 0, 0, 0)
+        _Color("_Color", Color) = (0, 0, 0, 0)
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
@@ -199,7 +199,7 @@ Shader "Custom/AlwaysOnTop2"
         
         // Graph Properties
         CBUFFER_START(UnityPerMaterial)
-        float4 _BaseColor;
+        float4 _Color;
         CBUFFER_END
         
         
@@ -261,7 +261,7 @@ Shader "Custom/AlwaysOnTop2"
         SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
         {
             SurfaceDescription surface = (SurfaceDescription)0;
-            float4 _Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4 = _BaseColor;
+            float4 _Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4 = _Color;
             surface.BaseColor = (_Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4.xyz);
             surface.Alpha = float(1);
             return surface;
@@ -495,7 +495,7 @@ Shader "Custom/AlwaysOnTop2"
         
         // Graph Properties
         CBUFFER_START(UnityPerMaterial)
-        float4 _BaseColor;
+        float4 _Color;
         CBUFFER_END
         
         
@@ -788,7 +788,7 @@ Shader "Custom/AlwaysOnTop2"
         
         // Graph Properties
         CBUFFER_START(UnityPerMaterial)
-        float4 _BaseColor;
+        float4 _Color;
         CBUFFER_END
         
         
@@ -1101,7 +1101,7 @@ Shader "Custom/AlwaysOnTop2"
         
         // Graph Properties
         CBUFFER_START(UnityPerMaterial)
-        float4 _BaseColor;
+        float4 _Color;
         CBUFFER_END
         
         
@@ -1163,7 +1163,7 @@ Shader "Custom/AlwaysOnTop2"
         SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
         {
             SurfaceDescription surface = (SurfaceDescription)0;
-            float4 _Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4 = _BaseColor;
+            float4 _Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4 = _Color;
             surface.BaseColor = (_Property_9e84e92c8dc3462d9a181bbc7028f1fe_Out_0_Vector4.xyz);
             surface.Alpha = float(1);
             return surface;

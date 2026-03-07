@@ -1,0 +1,1 @@
+cmd /k "cd D:\projects\BCI_TD\PythonTooling\bci-essentials-python\examples & python .\ssvep_unity_backend.py"

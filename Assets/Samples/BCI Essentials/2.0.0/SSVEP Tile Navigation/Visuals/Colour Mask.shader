@@ -27,6 +27,7 @@ Shader "Unlit/Colour Mask"
 
         Cull Off
         Lighting Off
+        ZTest Always
         ZWrite Off
         Blend One OneMinusSrcAlpha
 
