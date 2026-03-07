@@ -7,16 +7,17 @@ using UnityEngine;
 public class TowerSocket : MonoBehaviour
 {
     [SerializeField] GameObject towerPrefab;
-    [SerializeField] GameObject currentTower;
+    public GameObject currentTower;
     [SerializeField] GameObject uiParent;
     [SerializeField] TowerController towerController;
 
     private void OnMouseDown()
     {
-        if (!GameManager.instance.waveInProgress)
-        {
-            SpawnTower();
-        }        
+        //if (!GameManager.instance.waveInProgress)
+        //{
+        //    SpawnTower();
+        //}        
+        SpawnTower();
     }
 
     public void SpawnTower()
@@ -27,16 +28,38 @@ public class TowerSocket : MonoBehaviour
             GameManager.instance.ModifyGold(-currentTower.GetComponent<TowerController>().cost);
             uiParent.SetActive(false);
             towerController = currentTower.GetComponent<TowerController>();
+            towerController.placementSocket = this;
         }
+    }
+
+    private void Update()
+    {
+        //This is gross, sorry.
+        if (GameManager.instance.waveInProgress)
+        {
+            HideUI();
+        }
+    }
+
+    public void PopulateUI()
+    {
+        if (!currentTower)
+            uiParent.SetActive(true);
+    }
+
+    public void HideUI()
+    {
+        print("I should be hiding.");
+        uiParent.SetActive(false);
     }
 
     public void SocketInteract()
     {
         if(!currentTower)
             SpawnTower();
-        else
-        {
-            towerController.RemoteMouseUp();
-        }
+        //else
+        //{
+        //    towerController.RemoteMouseUp();
+        //}
     }
 }

@@ -72,6 +72,7 @@ MonoBehaviour:
   upgradeUI: {fileID: 8273750679201095101}
   potentialTargets: []
   towerType: 0
+  placementSocket: {fileID: 0}
 --- !u!54 &309300645794703967
 Rigidbody:
   m_ObjectHideFlags: 0

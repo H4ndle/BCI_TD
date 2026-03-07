@@ -88,4 +88,9 @@ public class GameManager : MonoBehaviour
         else
             stateText.text = "Build Phase";
     }
+
+    public void Restart()
+    {
+        Application.LoadLevel(0);
+    }
 }

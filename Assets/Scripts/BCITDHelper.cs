@@ -32,6 +32,12 @@ public class BCITDHelper : MonoBehaviour
             bciController = GetComponent<BCIController>();
 
     }
+
+    public void ActivateDefaultStimGroup()
+    {
+        ActivateStimGroup(StimGroup.Towers);
+    }
+
     public void ActivateStimGroup(StimGroup group)
     {
         if (group == StimGroup.Towers)

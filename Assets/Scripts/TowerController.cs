@@ -33,11 +33,12 @@ public class TowerController : MonoBehaviour
     public TowerType towerType = TowerType.Normal;
 
     Animator anim;
+    public TowerSocket placementSocket;
 
     // Start is called before the first frame update
     void Start()
     {
-        CloseUpgradeUI();
+        CloseUpgradeUISimple();
         SetRadius(range);
 
         anim = GetComponentInChildren<Animator>();
@@ -81,9 +82,9 @@ public class TowerController : MonoBehaviour
             }              
         }
 
-        if (GameManager.instance.waveInProgress)
+        if (GameManager.instance.waveInProgress && upgradeUI.activeInHierarchy)
         {
-            CloseUpgradeUI();
+            CloseUpgradeUISimple();
         }
     }
 
@@ -98,15 +99,15 @@ public class TowerController : MonoBehaviour
             if (upgradeUI.activeInHierarchy)
             {
                 CloseUpgradeUI();
-                BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Upgrades);
-                BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
+                //BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Upgrades);
+                //BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
             }
             else
             {
-                transform.parent.BroadcastMessage("CloseUpgradeUI");
+                transform.parent.BroadcastMessage("CloseUpgradeUISimple");
                 SummonUpgradeUI();
-                BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Towers);
-                BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Upgrades);
+                //BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Towers);
+                //BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Upgrades);
             }
         }
     }
@@ -132,19 +133,35 @@ public class TowerController : MonoBehaviour
         }
     }
 
-    public void SummonUpgradeUI()
-    {
-        upgradeUI.SetActive(true);
-    }
-
-    public void CloseUpgradeUI()
+    public void CloseUpgradeUISimple()
     {
         upgradeUI.SetActive(false);
     }
 
+    public void SummonUpgradeUI()
+    {
+        upgradeUI.SetActive(true);
+        BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Towers);
+        BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Upgrades);
+        transform.parent.BroadcastMessage("HideUI");
+    }
+
+    public void CloseUpgradeUI()
+    {
+        print("Calling CloseUPgradeUI");
+        upgradeUI.SetActive(false);
+        BCITDHelper.instance.DisableStimGroup(BCITDHelper.StimGroup.Upgrades);
+        BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
+        transform.parent.BroadcastMessage("PopulateUI");
+    }
+
     public void SellTower()
     {
+        print("Should sell tower");
         GameManager.instance.ModifyGold(saleValue);
+        placementSocket.currentTower = null;
+        placementSocket.PopulateUI();
+        CloseUpgradeUI();
         Destroy(gameObject);
     }
 
@@ -159,7 +176,7 @@ public class TowerController : MonoBehaviour
         SwapModel();
 
         upgradeTier++;
-        CloseUpgradeUI();
+        CloseUpgradeUISimple();
     }
 
     public void UpgradeRange(float amount)
@@ -171,7 +188,7 @@ public class TowerController : MonoBehaviour
         SwapModel();
 
         upgradeTier++;
-        CloseUpgradeUI();
+        CloseUpgradeUISimple();
     }
 
     public void UpgradeSplash()
@@ -186,7 +203,7 @@ public class TowerController : MonoBehaviour
         SwapModel();
 
         upgradeTier++;
-        CloseUpgradeUI();
+        CloseUpgradeUISimple();
     }
 
     public void UpgradeSpeed()
@@ -197,7 +214,7 @@ public class TowerController : MonoBehaviour
         SwapModel();
 
         upgradeTier++;
-        CloseUpgradeUI();
+        CloseUpgradeUISimple();
     }
     private void CleanSocket()
     {
@@ -209,6 +226,7 @@ public class TowerController : MonoBehaviour
             }
         }
     }
+
     private void SwapModel()
     {
         anim.SetTrigger("Upgrade");

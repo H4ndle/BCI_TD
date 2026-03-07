@@ -3,7 +3,6 @@ using UnityEditor;
 using BCIEssentials.Stimulus.Presentation.Standard;
 using System.Collections;
 
-[CanEditMultipleObjects]
 public class ColourMaskFlashBehaviour : ColourFlashBehaviour
 {
     [SerializeField, Space]
