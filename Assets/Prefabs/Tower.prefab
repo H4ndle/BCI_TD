@@ -129,6 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 643032888942410962}
+  - component: {fileID: 5536803186273354539}
   m_Layer: 6
   m_Name: Model
   m_TagString: Untagged
@@ -152,6 +153,27 @@ Transform:
   - {fileID: 1782902946647143807}
   m_Father: {fileID: 2771425764494310112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &5536803186273354539
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201071388311502345}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ca6bb5beb3bfc0440823958da9fd509a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8273750679201095101
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +406,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7173268804958928286}
     m_Modifications:
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 444859572391933873, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: eventToFire.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -529,6 +566,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -661,7 +708,7 @@ PrefabInstance:
     - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoteMouseUp
+      value: CloseUpgradeUI
       objectReference: {fileID: 0}
     - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
@@ -826,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: RemoteMouseUp
+      value: CloseUpgradeUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -847,6 +894,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7173268804958928286}
     m_Modifications:
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 377927592722262297, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 444859572391933873, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: upgradeCost
@@ -1136,6 +1198,16 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
+      objectReference: {fileID: 0}
     - target: {fileID: 8695319774023566326, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -1344,6 +1416,21 @@ PrefabInstance:
       propertyPath: eventToFire.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_FloatArgument
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 5793090041292627013, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 5793090041292627013, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5793090041292627013, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: OnSelected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: TowerController, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 7536880975960259818, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}
       propertyPath: m_text
@@ -1460,6 +1547,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 9034541613849932405}
+    - target: {fileID: 8620943130010341351, guid: 45dce4e3f9bf72a478fe60decd21ef12,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CloseUpgradeUI
       objectReference: {fileID: 0}
     - target: {fileID: 8695319774023566326, guid: 45dce4e3f9bf72a478fe60decd21ef12,
         type: 3}

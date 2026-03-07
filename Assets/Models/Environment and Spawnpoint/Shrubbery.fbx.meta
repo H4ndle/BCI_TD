@@ -3,7 +3,12 @@ guid: 0cd673e62e5967a4681f2df944b50cc9
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plant Texture
+    second: {fileID: 2100000, guid: 2057f3985d9619f45a48d2239f94f4a6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -70,8 +75,8 @@ ModelImporter:
     useFileScale: 1
     strictVertexDataChecks: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 40
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0

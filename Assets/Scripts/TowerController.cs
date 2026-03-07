@@ -32,11 +32,15 @@ public class TowerController : MonoBehaviour
     public enum TowerType {Normal, Splash, Damage}
     public TowerType towerType = TowerType.Normal;
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         CloseUpgradeUI();
         SetRadius(range);
+
+        anim = GetComponentInChildren<Animator>();
     }
 
     public void SetRadius(float radius)
@@ -207,6 +211,7 @@ public class TowerController : MonoBehaviour
     }
     private void SwapModel()
     {
+        anim.SetTrigger("Upgrade");
         CleanSocket();
 
         if(upgradeTier == 0)
