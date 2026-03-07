@@ -38,6 +38,12 @@ public class BCITDHelper : MonoBehaviour
         ActivateStimGroup(StimGroup.Towers);
     }
 
+    public void DisableAllStimGroups()
+    {
+        DisableStimGroup(StimGroup.Towers);
+        DisableStimGroup(StimGroup.Upgrades);
+    }
+
     public void ActivateStimGroup(StimGroup group)
     {
         if (group == StimGroup.Towers)

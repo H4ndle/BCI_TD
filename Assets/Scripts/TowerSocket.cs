@@ -35,7 +35,7 @@ public class TowerSocket : MonoBehaviour
     private void Update()
     {
         //This is gross, sorry.
-        if (GameManager.instance.waveInProgress)
+        if (GameManager.instance.waveInProgress && uiParent.activeInHierarchy)
         {
             HideUI();
         }

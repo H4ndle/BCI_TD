@@ -107,7 +107,14 @@ public class WaveSpawner : MonoBehaviour
             if (spawningComplete && enemyParent.childCount == 0)
             {
                 currentWaveCounter++;
-                GameManager.instance.EndWave();
+                if (currentWaveCounter < waves.Length)
+                {
+                    GameManager.instance.EndWave(false);
+                }
+                else
+                {
+                    GameManager.instance.EndWave(true);
+                }
             }
 
             yield return new WaitForEndOfFrame();

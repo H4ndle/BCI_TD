@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI stateText;
     [SerializeField] Animator waveEndAnimator;
     [SerializeField] Animator gameOverAnimator;
+    [SerializeField] Animator gameEndAnimator;
     private bool isGameOver = false;
     // Start is called before the first frame update
     void Start()
@@ -66,12 +67,22 @@ public class GameManager : MonoBehaviour
         goldReadout.text = currentGold.ToString();
     }
 
-    public void EndWave()
+    public void EndWave(bool finalWave)
     {
         waveInProgress = false;
-        waveEndAnimator.SetTrigger("WaveCleared");
-        UpdateWaveText();
-        BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
+        if (finalWave)
+        {
+            gameEndAnimator.SetTrigger("GameOver");
+            BCITDHelper.instance.DisableAllStimGroups();
+        }
+        else
+        {
+            waveEndAnimator.SetTrigger("WaveCleared");
+            UpdateWaveText();
+            BCITDHelper.instance.DisableAllStimGroups();
+            BCITDHelper.instance.ActivateStimGroup(BCITDHelper.StimGroup.Towers);
+        }
+
     }
 
     public void InitiateGameOver()
